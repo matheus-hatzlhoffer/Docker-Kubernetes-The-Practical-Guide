@@ -1,0 +1,17 @@
+FROM node
+
+WORKDIR /app
+
+COPY package.json .
+
+RUN npm install
+
+COPY . .
+
+ARG DEFAULT_BACKEND=multi-backend
+
+ENV BACKEND ${DEFAULT_BACKEND}
+
+EXPOSE 3000
+
+CMD [ "npm", "start" ]
